@@ -1,0 +1,13 @@
+<div class="col-3">
+  <h2 class="m-5">Posts</h2>
+  <div class="card m-5 bg-light text-dark" *ngFor="let post of postList">
+    <div class="card-body">
+      <h5 class="card-title">{{ post.title }}</h5>
+
+      <p class="card-text">
+        {{ post.body }}
+      </p>
+      <a href="#" class="card-link">Card link</a>
+    </div>
+  </div>
+</div>

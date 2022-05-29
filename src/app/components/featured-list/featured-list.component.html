@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <h2 class="m-5 text-dark">Most Popular</h2>
+    </div>
+
+    <div class="row">
+      <div *ngFor="let featureProduct of featureProducts">
+        <div class="col">
+          <!-- used a variable/function to [ngClasss] == getCardColor(featureProduct.price)-->
+          <div
+            class="card mb-5 ml-2"
+            [ngClass]="getCardColor(featureProduct.price)"
+            style="width: 18rem"
+          >
+            <img
+              [src]="featureProduct.imagePath"
+              class="rounded-circle p-3"
+              alt="image"
+            />
+            <div class="card-body">
+              <h4 class="card-title">{{ featureProduct.title }}</h4>
+              <h4 class="card-text float-left text-danger">
+                {{ featureProduct.price }} LKR
+              </h4>
+              <a href="#" class="btn btn-danger float-right">Add to cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

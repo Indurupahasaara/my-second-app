@@ -1,0 +1,30 @@
+<!-- <mat-spinner color="accent"></mat-spinner> -->
+
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <h2 class="m-5">Product List</h2>
+    </div>
+
+    <div class="row">
+      <div *ngFor="let product of products">
+        <app-product [product]="product"></app-product>
+      </div>
+    </div>
+
+    <!-- <div class="row">
+      <div class="col-12">
+        <div class="card mb-5 bg-lite" *ngFor="let post of postList">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+
+            <p class="card-text">
+              {{ post.body }}
+            </p>
+            <a href="#" class="card-link">Card link</a>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>

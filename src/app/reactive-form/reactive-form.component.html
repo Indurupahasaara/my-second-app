@@ -1,0 +1,89 @@
+<div class="container">
+    <h2 class="mt-5"> Student Registration Form</h2>
+    <form novalidate #f="ngForm" (ngSubmit)="onSubmit()">
+
+        <fieldset ngModelGroup="name">
+            <div class="col-6">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" #firstName="ngModel" class="form-control is-invalid" [ngClass]="{
+                        'is-invalid':firstName.invalid && (firstName.dirty || firstName.touched),
+                        'is-valid': firstName.valid && (firstName.dirty || firstName.touched)
+                    }" placeholder="Enter First Name" name="firstName" [(ngModel)]="studentModel.firstName">
+                    <div class="invalid-feedback">
+                        <p>Please Enter First Name</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" #lastName="ngModel" class="form-control is-valid" [ngClass]="{
+                        'is-invalid':lastName.invalid && (lastName.dirty || lastName.touched),
+                        'is-valid': lastName.valid && (lastName.dirty || lastName.touched)
+                    }" placeholder="Enter Last Name" name="lastName" ngModel [(ngModel)]="studentModel.lastName">
+                </div>
+            </div>
+
+        </fieldset>
+
+
+
+        <div class="col-6">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" #email="ngModel" autocomplete="off" class="form-control" [ngClass]="{
+                    'is-invalid':email.invalid && (email.dirty || email.touched),
+                    'is-valid': email.valid && (email.dirty || email.touched)
+                }" placeholder="Enter Email" name="email" ngModel [(ngModel)]="studentModel.email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                <div class="invalid-feedback">
+                    Please Enter Valid Email
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="form-group">
+                <label>Password</label>
+                <input type="text" #password="ngModel" class="form-control" [ngClass]="{
+                    'is-invalid':password.invalid && (password.dirty || password.touched),
+                    'is-valid': password.valid && (password.dirty || password.touched)
+                }" placeholder="Enter Password" name="password" ngModel [(ngModel)]="studentModel.password" required minlength="8">
+                <div class="invalid-feedback">
+                    Please Enter Valid Password
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="form-group">
+                <label>Language</label>
+                <select class="form-control" #language="ngModel" [ngClass]="{
+                    'is-invalid':language.invalid && (language.dirty || language.touched),
+                    'is-valid': language.valid && (language.dirty || language.touched)
+                }" name="language" [(ngModel)]="studentModel.language" required>
+                    <option value="" disabled selected>Select Language</option>
+                    <option *ngFor="let lang of languages" [value]="lang">{{lang}}</option>               
+                </select>
+                <div class="invalid-feedback">
+                    Please Select Language
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="form-group">
+                <input type="checkbox" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}">&nbsp;
+                <label> I agree to the terms of service</label>
+            </div>
+        </div>
+
+        <div class="container">
+            <button type="submit" class="btn btn-success" [disabled]="f.invalid || checked">Submit</button>
+        </div>
+
+    </form>
+
+    <p>{{f.value | json}}</p>
+</div>

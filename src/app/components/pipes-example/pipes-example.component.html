@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="mt-5">
+    <p ngNonBindable>{{ myString | uppercase }}</p>
+
+    <h2>{{ myString | uppercase }}</h2>
+
+    <p ngNonBindable>{{ myString2 | lowercase }}</p>
+    <h2>{{ myString2 | lowercase }}</h2>
+    <br />
+
+    <p ngNonBindable>{{ amount | currency }} Default</p>
+    <h2>{{ amount | currency }}</h2>
+
+    <p ngNonBindable>{{ amount | currency: "EUR" }}Update Currency Symbol</p>
+    <h2>{{ amount | currency: "EUR" }}</h2>
+
+    <p ngNonBindable>
+      {{ amount | currency: "EUR":"code" }}Update Currency Symbol
+    </p>
+    <h2>{{ amount | currency: "EUR":"code" }}</h2>
+
+    <p ngNonBindable>{{ amount | date }}Update Currency Symbol</p>
+    <h2>{{ amount | date }}</h2>
+
+    <p ngNonBindable>{{ amount | date: "shortDate" }}short date</p>
+    <h2>{{ amount | date: "shortDate" }}</h2>
+
+    <p ngNonBindable>{{ amount | date: "longDate" }}Full date</p>
+    <h2>{{ amount | date: "longDate" }}</h2>
+
+    <p ngNonBindable>{{ amount | date: "d-M-y" }}formatted date</p>
+    <h2>{{ amount | date: "dd-MM-yyyy" }}</h2>
+
+    <p ngNonBindable>{{ amount | date: "hh:mm:ss" }}formatted time</p>
+    <h2>{{ amount | date: "hh:mm:ss" }}</h2>
+
+    <!-- Decimal -->
+    <p ngNonBindable>{{ total | number }}Number</p>
+    <h2>{{ total | number: "5.2-2" }}</h2>
+
+    <!-- percentage -->
+    <p ngNonBindable>{{ perVal | percent }}percentage</p>
+    <h2>{{ perVal | percent: "1.2" }}</h2>
+
+    <!-- JSON -->
+    <p ngNonBindable>{{ myObject | json }}json</p>
+    <h2>{{ myObject | json }}</h2>
+
+    <!-- Custop pipe- reverse -->
+
+    <h2>{{ myString | reverse }}</h2>
+
+    <!-- Multiple pipes -->
+    <h2>{{ myString | reverse | uppercase }}</h2>
+
+    <!-- SQRoot -->
+    <h2>SQ Root of 81 = {{ 81 | sqroot: "inch" }}</h2>
+
+    <!-- fileSize pipe -->
+    <p ngNonBindable>{{ size | fileSize }}fileSize pipe</p>
+    <h2>{{ size | fileSize }}</h2>
+
+    <!-- power -->
+    <p ngNonBindable>{{ value | power: 3 }}power pipe</p>
+    <h2>{{ value | power: 3 }}</h2>
+
+    <!-- repeat -->
+    <p ngNonBindable>{{ myString | repeat: 5 }}repeat pipe</p>
+    <h2>{{ myString | repeat: 5 }}</h2>
+  </div>
+</div>

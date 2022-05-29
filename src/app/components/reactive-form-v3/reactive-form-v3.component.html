@@ -1,0 +1,316 @@
+<div class="container col-5 border border-dark my-5">
+
+    <div class="container">
+        <div class="container mt-5">
+            <h1>Sign Up</h1>
+        </div>
+        <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+            <!-- Name Field -->
+            <div class="col-12">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col">
+                            <label for="">First name</label>
+                            <input [value]="regForm.value.firstName | lowercase" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors,'is-valid':(f.firstName.dirty || f.firstName.touched) && f.firstName.valid }" type="text" class="form-control is-invalid"
+                                placeholder="First name">
+                            <div class="invalid-feedback" *ngIf="submitted && f['firstName'].errors">
+                                <div *ngIf="f.firstName.errors.required">Please Enter First Name</div>
+                                <div *ngIf="f.firstName.errors.pattern">Firstname should contain minimum 2 characters & should'nt contain symbols and numbers</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="">Last name</label>
+                            <input [value]="regForm.value.lastName | lowercase" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors,'is-valid':(f.lastName.dirty || f.lastName.touched) && f.lastName.valid  }" type="text" class="form-control" placeholder="Last name">
+                            <div class="invalid-feedback" *ngIf="submitted && f['lastName'].errors">
+                                <div *ngIf="f.lastName.errors.required">Please Enter Last Name</div>
+                                <div *ngIf="f.lastName.errors.pattern">Lastname should contain minimum 2 characters & should'nt contain symbols and numbers</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DOB field -->
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="">Date of birth</label>
+                    <input formControlName="dob" type="date" class="form-control" placeholder="Enter DOB" [ngClass]="{ 'is-invalid': submitted && f['dob'].errors,'is-valid':(f.dob.dirty || f.dob.touched) && f.dob.valid  }" />
+                    <div class="invalid-feedback" *ngIf="submitted && f['dob'].errors">
+                        <div *ngIf="f['dob'].errors['required']">Please Enter DOB</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gender -->
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="">Gender</label>
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gender" id="male" value="male" formControlName="gender" checked="checked">
+                                <label class="form-check-label" for="male">
+                              Male
+                            </label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gender" id="female" value="female" formControlName="gender">
+                                <label class="form-check-label" for="female">
+                               Female
+                            </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="invalid-feedback" *ngIf="submitted && f['gender'].errors">
+                        <div *ngIf="f['gender'].errors['required']">Please select gender</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Country -->
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="">Country</label>
+                    <select formControlName="country" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['country'].errors,'is-valid':(f.country.dirty || f.country.touched) && f.country.valid  }">
+                    <option value="" disabled selected>Select country</option>
+                    <option *ngFor="let country of countries" [value]="country">{{country}}</option> 
+                </select>
+                    <div class="invalid-feedback" *ngIf="submitted && f['country'].errors">
+                        <div *ngIf="f['country'].errors['required']">Please Select Country</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address Field -->
+            <fieldset>
+                <div class="col-12">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="">Town</label>
+                                <input formControlName="town" [ngClass]="{ 'is-invalid': submitted && f['town'].errors,'is-valid':(f.town.dirty || f.town.touched) && f.town.valid  }" type="text" class="form-control" placeholder="Town">
+                                <div class="invalid-feedback" *ngIf="submitted && f['town'].errors">
+                                    <div *ngIf="f.town.errors.required">Please Enter Town</div>
+
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <label for="">City</label>
+                                <input formControlName="city" [ngClass]="{ 'is-invalid': submitted && f['city'].errors,'is-valid':(f.city.dirty || f.city.touched) && f.city.valid  }" type="text" class="form-control" placeholder="City">
+                                <div class="invalid-feedback" *ngIf="submitted && f['city'].errors">
+                                    <div *ngIf="f.city.errors.required">Please Enter Last Name</div>
+
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <label for="">Zip code</label>
+                                <input formControlName="postal" [ngClass]="{ 'is-invalid': submitted && f['postal'].errors,'is-valid':(f.postal.dirty || f.postal.touched) && f.postal.valid  }" type="text" class="form-control" placeholder="Zip">
+                                <div class="invalid-feedback" *ngIf="submitted && f['postal'].errors">
+                                    <div *ngIf="f.postal.errors.required">Please Enter Postal Code</div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!--Contact-->
+
+            <div class="col-12">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col">
+                            <label for="">Mobile Number</label>
+                            <input formControlName="mobileNo" [ngClass]="{ 'is-invalid': submitted && f['mobileNo'].errors,'is-valid':(f.mobileNo.dirty || f.mobileNo.touched) && f.mobileNo.valid }" type="text" class="form-control is-invalid" placeholder="077-xxxxxxx">
+                            <div class="invalid-feedback" *ngIf="submitted && f['mobileNo'].errors">
+                                <div *ngIf="f.mobileNo.errors.required">Please Enter mobile number</div>
+                                <div *ngIf="f.mobileNo.errors.pattern">Please enter valid mobile number</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="">Home Number</label>
+                            <input formControlName="homeNo" [ngClass]="{ 'is-invalid': submitted && f['homeNo'].errors,'is-valid':(f.homeNo.dirty || f.homeNo.touched) && f.homeNo.valid  }" type="text" class="form-control" placeholder="091-xxxxxxx">
+                            <div class="invalid-feedback" *ngIf="submitted && f['homeNo'].errors">
+                                <div *ngIf="f.homeNo.errors.required">Please Enter home number</div>
+                                <div *ngIf="f.homeNo.errors.pattern">Please enter valid home number</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-12">
+                <div class="form-group">
+                    <label for="">Contact number</label>
+                    <input formControlName="contact" type="text" class="form-control" placeholder="+94" [ngClass]="{ 'is-invalid': submitted && f['contact'].errors,'is-valid':(f.contact.dirty || f.contact.touched) && f.contact.valid  }" />
+                    <div class="invalid-feedback" *ngIf="submitted && f['contact'].errors">
+                        <div *ngIf="f['contact'].errors['required']">Please Enter Contact Number</div>
+                        <div *ngIf="f['contact'].errors['pattern']">Please Enter Valid Contact Number</div>
+                    </div>
+                </div>
+            </div> -->
+
+            <br>
+            <hr><br>
+
+            <!--Job role-->
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="">Job Role</label>
+                    <select formControlName="job" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['job'].errors,'is-valid':(f.job.dirty || f.job.touched) && f.job.valid  }">
+                    <option value="" disabled selected>Select Job Role</option>
+                    <option *ngFor="let job of jobRoles" [value]="job">{{job}}</option> 
+                </select>
+                    <div class="invalid-feedback" *ngIf="submitted && f['job'].errors">
+                        <div *ngIf="f['job'].errors['required']">Please Select Job Role</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interests -->
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="">Interests</label>
+                    <div class="row">
+
+                        <div class="col-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="dev" formControlName="interests">
+                                <label class="form-check-label" for="dev">
+                              Development
+                            </label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="des" formControlName="interests">
+                                <label class="form-check-label" for="des">
+                              Design
+                            </label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="buss" formControlName="interests">
+                                <label class="form-check-label" for="buss">
+                              Business
+                            </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input formControlName="email" type="text" class="form-control" placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors,'is-valid':(f.email.dirty || f.email.touched) && f.email.valid  }" required />
+                    <div class="invalid-feedback" *ngIf="submitted && f['email'].errors">
+                        <div *ngIf="f['email'].errors['required']">Please Enter Email Address</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Qualification -->
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="">Qualification</label>
+                    <select formControlName="qualification" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['qualification'].errors,'is-valid':(f.qualification.dirty || f.qualification.touched) && f.qualification.valid  }">
+                    <option value="" disabled selected>Select qualification</option>
+                    <option *ngFor="let qualification of qualifications" [value]="qualification">{{qualification}}</option> 
+                </select>
+                    <div class="invalid-feedback" *ngIf="submitted && f['job'].errors">
+                        <div *ngIf="f['job'].errors['required']">Please Select qualification</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- username -->
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="">Username</label>
+                    <input formControlName="username" type="text" class="form-control" placeholder="Username" [ngClass]="{ 'is-invalid': submitted && f['username'].errors,'is-valid':(f.username.dirty || f.username.touched) && f.username.valid  }" required />
+                    <div class="invalid-feedback" *ngIf="submitted && f['username'].errors">
+                        <div *ngIf="f['username'].errors['required']">Please Enter username</div>
+                        <div *ngIf="f.username.errors.maxlength">
+                            Please Enter maximum 10 Characters
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- password -->
+            <div class="col-12">
+                <div class="form-group">
+                    <label>Password</label>
+                    <input formControlName="password" type="password" class="form-control" placeholder="Enter Password" name="firstName" [ngClass]="{ 'is-invalid': submitted && f['password'].errors,'is-valid':(f.password.dirty || f.password.touched) && f.password.valid }"
+                    />
+                    <div class="invalid-feedback" *ngIf="submitted && f['password'].errors">
+                        <div *ngIf="f['password'].errors['required']">
+                            Please Enter Password
+                        </div>
+                        <div *ngIf="f.password.errors.minlength">
+                            Please Enter Minimum 8 Characters
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- conform password -->
+            <div class="col-12">
+                <div class="form-group">
+                    <label>Conform Password</label>
+                    <input formControlName="conformPassword" type="password" class="form-control" placeholder="Conform Password" name="conformPassword" [ngClass]="{ 'is-invalid': submitted && f['conformPassword'].errors,'is-valid':(f.conformPassword.dirty || f.conformPassword.touched) && f.conformPassword.valid }"
+                    />
+                    <div class="invalid-feedback" *ngIf="submitted && f['conformPassword'].errors">
+                        <div *ngIf="f['conformPassword'].errors['required']">
+                            Please Conform Password
+                        </div>
+                        <div *ngIf="f.conformPassword.errors.mustMatch">
+                            Password does not match
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About -->
+            <div class="col-6">
+                <div class="form-group">
+                    <label>Additional Information</label>
+                    <textarea formControlName="about" type="text" rows="4" cols="100" class="form-control" placeholder="Say something..." [ngClass]="{ 'is-invalid': submitted && f['about'].errors,'is-valid':(f.about.dirty || f.about.touched) && f.about.valid }"></textarea>
+                    <div class="invalid-feedback" *ngIf="submitted && f['about'].errors">
+                        <div *ngIf="f['about'].errors['required']">
+                            Please Enter additional information
+                        </div>
+                        <div *ngIf="f.about.errors.maxlength">
+                            Maximum character length is 200 characters
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agree checkbox -->
+            <div class="col-12">
+                <div class="form-group">
+                    <input type="checkbox" [checked]="f.accept.value" (change)="changeValue()" /> I agree to the terms of service.
+                </div>
+            </div>
+
+            <div class="container my-4">
+                <!-- <button type="button" (click)="clearForm()">
+                <i class="fa-solid fa-eraser"></i> Clear
+              </button> -->
+                <button type="submit" class="btn btn-light" [disabled]="!regForm.value.accept" (click)="onSubmit()">
+                    <i *ngIf="isLoading" class="fas fa-spinner fa-spin"> </i>
+                    Sign In</button>
+            </div>
+
+        </form>
+    </div>
+</div>

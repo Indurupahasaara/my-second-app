@@ -1,0 +1,87 @@
+<!-- <p>header works!</p> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#" routerLink="/product-list">FOOD STORE</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#" routerLink="/product-list">Products </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/posts">Posts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/pipes">Pipes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/ft-list">Featured Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/observable">Observables</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/template-driven-form">Template Driven Form</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/reactive-form">Reactive Form</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/reactive-form-v3">Reactive Form V3</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/invoice">Invoice</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/customer">Coustomer</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+          About Us
+        </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" routerLink="/parent">Parent</a>
+                    <a class="dropdown-item" href="#" routerLink="/details">Details</a>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto" *ngIf="userName">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+          {{ userName }}
+        </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" (click)="logout()">LogOut</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ng-switch -->
+<!-- <div [ngSwitch]="routePath">
+  <div *ngSwitchCase="'products'">
+    <app-product-list></app-product-list>
+  </div>
+
+  <div *ngSwitchCase="'ft-products'">
+    <app-featured-list></app-featured-list>
+  </div>
+
+  <div *ngSwitchCase="'posts'">
+    <app-posts></app-posts>
+  </div>
+
+  <div *ngSwitchDefault></div>
+</div> -->
+
+<!-- <div class="col-9">
+  <app-product-list></app-product-list>
+</div>
+<div class="col-3">
+  <app-featured-list></app-featured-list>
+</div> -->
